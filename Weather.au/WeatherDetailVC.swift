@@ -11,7 +11,7 @@ import UIKit
 extension WeatherDetailVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return detailedData.count
+        return !isLoaded ? 0 : detailedData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -27,7 +27,7 @@ class WeatherDetailVC: UIViewController {
     
     var city: City?
     var detailedData = Array<WeatherDetail>()
-    
+    var isLoaded = false
     override func viewDidLoad() {
      super.viewDidLoad()
         if city == nil || city?.forecast == nil {
@@ -39,9 +39,20 @@ class WeatherDetailVC: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.tableFooterView = UIView()
-        
+        table.backgroundColor = .clear
         title = city!.name
-        createDetailedForecast()
+//        createDetailedForecast()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if !isLoaded {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 , execute: {
+                self.isLoaded = true
+                self.createDetailedForecast()
+                self.table.reloadSections([0], with: .automatic)
+            })
+
+        }
     }
     
     func createDetailedForecast() {
@@ -56,7 +67,7 @@ class WeatherDetailVC: UIViewController {
         detailedData.append(WeatherDetail(title: "Sunrise time", details: city!.forecast!.sunriseTime))
         detailedData.append(WeatherDetail(title: "Sunset time", details: city!.forecast!.sunsetTime))
         detailedData.append(WeatherDetail(title: "Updated", details: city!.forecast!.calculationTime))
-        table.reloadData()
+//        table.reloadData()
     }
     
     
