@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import ISMessages
 
 class WeatherCell: UITableViewCell {
+    enum CellState {
+        case loading, error, allGood
+    }
+    
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var loader: UIActivityIndicatorView!
-
-    var loadingErrorMessage: String = ""
-    var city: Constants.City?
     
     var errorView: UIImageView {
         let error = UIImageView(frame: CGRect(x: 0, y: 0, width: 21, height: 21))
@@ -29,27 +31,16 @@ class WeatherCell: UITableViewCell {
         loader.isHidden = false
     }
     
-    
-    
-    func fillWith(city:  Constants.City,   completion: @escaping(_ error: String) -> ()) {
-        self.isUserInteractionEnabled = false
-        self.city = city
-        cityName.text = city.rawValue
-        loader.isHidden = false
-        temperature.text = ""
-        self.accessoryType = .none
-        self.accessoryView = nil
-        connectionManager.getWeatherOf(city: .brisbane, completion: {
-            success, errorMessage in
-            self.loader.isHidden = true
-            self.isUserInteractionEnabled = true
-            self.loadingErrorMessage = errorMessage
-            if !success {
-                 self.accessoryView = self.errorView
-            } else {
-                self.accessoryType = .disclosureIndicator
-            }
-            completion(errorMessage)
-        })
+    func setState(_ state: CellState)  {
+        loader.isHidden = state != .loading
+        self.isUserInteractionEnabled = state == .allGood
+        self.accessoryType =  state != .allGood ? .none : .disclosureIndicator
+        self.accessoryView = state == .error ? self.errorView : nil
     }
+    
+    func fillWith(city:  Constants.City, forecast: Forecast?) {
+        cityName.text = city.rawValue
+        temperature.text = forecast != nil ? forecast!.mainForecastData.currentTempString : ""
+    }
+
 }

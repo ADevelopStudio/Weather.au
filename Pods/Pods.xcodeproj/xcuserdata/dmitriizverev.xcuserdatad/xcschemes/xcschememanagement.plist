@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ISMessages-ISMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ISMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>KVNProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4C4B180216960A09E044DCD1340DC2C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B05EA922388B9066363F348ED5EB9C0C</key>
+		<key>CEF3F3FD48F30AE7E6A6674BC46F1068</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD759FC869D6E056C6193B18FAD0A24F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
