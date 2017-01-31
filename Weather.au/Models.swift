@@ -39,12 +39,49 @@ class City: NSObject {
     }
 }
 
+
 struct Wind {
-    var speed: Double
-    var degree: Int
-    init(speed: Double, degree: Int) {
-        self.degree = degree
-        self.speed = speed
+    var descr: String
+    init(speed: Double, degree: Double) {
+        var direction: String {
+        switch degree {
+        case 348.75...360.0, 0..<11.25:
+            return "North"
+        case 11.25..<33.75:
+            return "NNE"
+        case 33.75..<56.25:
+            return "NorthEast"
+        case 56.25..<78.75:
+            return "ENE"
+        case 78.75..<101.25:
+            return "East"
+        case 101.25..<123.75:
+            return "ESE"
+        case 123.75..<146.25:
+            return "SouthEast"
+        case 146.25..<168.75:
+            return "SSE"
+        case 168.75..<191.25:
+            return "South"
+        case 191.25..<213.75:
+            return "SSW"
+        case 213.75..<236.25:
+            return "SouthWest"
+        case 236.25..<258.75:
+            return "WSW"
+        case 258.75..<281.25:
+            return "West"
+        case 281.25..<303.75:
+            return "WNW"
+        case 303.75..<326.25:
+            return "NorthWest"
+        case 326.25..<348.75:
+            return "NNW"
+        default:
+            return ""
+        }
+        }
+        self.descr = "\(speed.roundTo(places: 1)) m/s \(direction)(\(Int(degree)))"
     }
 }
 
@@ -59,29 +96,29 @@ struct Weather {
 
 
 struct MainForecastData {
-    var humidity: Int
-    var pressure: Int
-    var maxTemp: Double
-    var minTemp: Double
-    var currentTemp: Double
+    var humidity: String
+    var pressure: String
+    var maxTemp: String
+    var minTemp: String
+    var currentTemp: String
 
     init(humidity: Int, pressure: Int, maxTemp: Double, minTemp: Double, currentTemp: Double ) {
-        self.humidity = humidity
-        self.pressure = pressure
-        self.maxTemp = maxTemp
-        self.minTemp = minTemp
-        self.currentTemp = currentTemp
+        self.humidity = "\(humidity) %"
+        self.pressure = "\(pressure) hPa"
+        self.maxTemp = maxTemp.degreeCelsius
+        self.minTemp = minTemp.degreeCelsius
+        self.currentTemp = currentTemp.degreeCelsius
     }
 
 }
 
 class Forecast: NSObject {
-    var sunsetTime =  Date()
-    var sunriseTime =  Date()
-    var calculationTime =  Date()
-    var visibility = 0
-    var cloudiness = 0
-    var wind: Wind!
+    var sunsetTime =  ""
+    var sunriseTime =  ""
+    var calculationTime =  ""
+    var visibility = ""
+    var cloudiness = ""
+    var wind = ""
     var mainForecastData: MainForecastData!
     var cityName = ""
     var cityId = ""
@@ -97,21 +134,21 @@ class Forecast: NSObject {
     
 
     init(json: JSON) {
-        visibility =  json["visibility"].intValue
+        visibility = "\(json["visibility"].intValue) meters"
         cityName =  json["name"].stringValue
         cityId =  json["id"].stringValue
         
-        sunsetTime = Date(timeIntervalSince1970: json["sys"]["sunset"].doubleValue)
-        sunriseTime = Date(timeIntervalSince1970: json["sys"]["sunrise"].doubleValue)
-        calculationTime = Date(timeIntervalSince1970: json["dt"].doubleValue)
+        sunsetTime = Date(timeIntervalSince1970: json["sys"]["sunset"].doubleValue).justTime()
+        sunriseTime = Date(timeIntervalSince1970: json["sys"]["sunrise"].doubleValue).justTime()
+        calculationTime = Date(timeIntervalSince1970: json["dt"].doubleValue).formatted("K:mma dd.MM.yyyy")
         
-        cloudiness = json["clouds"]["all"].intValue
+        cloudiness = "\(json["clouds"]["all"].intValue) %"
         
         let mainData = json["main"]
         mainForecastData  = MainForecastData(humidity: mainData["humidity"].intValue, pressure: mainData["pressure"].intValue, maxTemp: mainData["temp_max"].doubleValue, minTemp: mainData["temp_min"].doubleValue, currentTemp: mainData["temp"].doubleValue)
         
         let windData = json["wind"]
-        wind = Wind(speed: windData["speed"].doubleValue, degree: windData["deg"].intValue)
+        wind = Wind(speed: windData["speed"].doubleValue, degree: windData["deg"].doubleValue).descr
         
         let weatherData = json["weather"]
         weather = Weather(icon: weatherData["icon"].stringValue, descr: weatherData["description"].stringValue)

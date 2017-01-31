@@ -42,4 +42,15 @@ class Connections: NSObject {
         }
     }
     
+    
+    func getWeatherImage(url: String,  completion: @escaping(_ image: UIImage?) -> ()) {
+        Alamofire.download(url).responseData { response in
+            if let data = response.result.value {
+                let image = UIImage(data: data)
+                completion(image)
+            } else {
+             completion(nil)
+            }
+        }
+    }
 }

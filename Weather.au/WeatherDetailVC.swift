@@ -38,6 +38,7 @@ class WeatherDetailVC: UIViewController {
         
         table.delegate = self
         table.dataSource = self
+        table.tableFooterView = UIView()
         
         title = city!.name
         createDetailedForecast()
@@ -45,16 +46,16 @@ class WeatherDetailVC: UIViewController {
     
     func createDetailedForecast() {
         detailedData = []
-        detailedData.append(WeatherDetail(title: "Mininum t", details: city!.forecast!.mainForecastData.minTemp.degreeCelsius))
-        detailedData.append(WeatherDetail(title: "Maximum t", details: city!.forecast!.mainForecastData.maxTemp.degreeCelsius))
-        detailedData.append(WeatherDetail(title: "Humidity", details: "\(city!.forecast!.mainForecastData.humidity) %"))
-        detailedData.append(WeatherDetail(title: "Atmospheric pressure", details: "\(city!.forecast!.mainForecastData.pressure) hPa"))
-        detailedData.append(WeatherDetail(title: "Visibility", details: "\(city!.forecast!.visibility) meters"))
-        detailedData.append(WeatherDetail(title: "Wind", details: "\(city!.forecast!.wind.speed.roundTo(places: 1)) m/s"))
-        detailedData.append(WeatherDetail(title: "Cloudiness", details: "\(city!.forecast!.cloudiness) %"))
-        detailedData.append(WeatherDetail(title: "Sunrise time", details: city!.forecast!.sunriseTime.justTime()))
-        detailedData.append(WeatherDetail(title: "Sunset time", details: city!.forecast!.sunsetTime.justTime()))
-        detailedData.append(WeatherDetail(title: "Updated", details: city!.forecast!.calculationTime.formatted("K:mma dd.MM.yyyy")))
+        detailedData.append(WeatherDetail(title: "Mininum temperature", details: city!.forecast!.mainForecastData.minTemp))
+        detailedData.append(WeatherDetail(title: "Maximum temperature", details: city!.forecast!.mainForecastData.maxTemp))
+        detailedData.append(WeatherDetail(title: "Humidity", details: city!.forecast!.mainForecastData.humidity))
+        detailedData.append(WeatherDetail(title: "Atmospheric pressure", details: city!.forecast!.mainForecastData.pressure))
+        detailedData.append(WeatherDetail(title: "Visibility", details: city!.forecast!.visibility))
+        detailedData.append(WeatherDetail(title: "Wind", details: city!.forecast!.wind))
+        detailedData.append(WeatherDetail(title: "Cloudiness", details: city!.forecast!.cloudiness))
+        detailedData.append(WeatherDetail(title: "Sunrise time", details: city!.forecast!.sunriseTime))
+        detailedData.append(WeatherDetail(title: "Sunset time", details: city!.forecast!.sunsetTime))
+        detailedData.append(WeatherDetail(title: "Updated", details: city!.forecast!.calculationTime))
         table.reloadData()
     }
     

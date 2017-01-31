@@ -38,7 +38,7 @@ class WeatherCell: UITableViewCell {
         self.accessoryType =  state != .allGood ? .none : .disclosureIndicator
         self.accessoryView = state == .error ? self.errorView : nil
         cityName.text =  forecastCity.name
-        temperature.text =  ((forecastCity.forecast != nil && state != .loading) ? forecastCity.forecast!.mainForecastData.currentTemp.degreeCelsius : "")
+        temperature.text =  ((forecastCity.forecast != nil && state != .loading) ? forecastCity.forecast!.mainForecastData.currentTemp : "")
     }
 
 }
