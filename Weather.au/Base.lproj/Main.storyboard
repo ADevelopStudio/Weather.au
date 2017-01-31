@@ -18,6 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="44" id="rNO-Wo-fjv" customClass="WeatherCell" customModule="Weather_au" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -26,19 +27,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VMf-fr-tNC">
-                                            <rect key="frame" x="28" y="12" width="263" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMf-fr-tNC">
+                                            <rect key="frame" x="28" y="12" width="245" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="lsa-6u-kXE"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="lsa-6u-kXE"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="temp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-Dg-NkY">
-                                            <rect key="frame" x="292" y="12" width="42" height="21"/>
+                                            <rect key="frame" x="274" y="12" width="60" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="1E2-1I-pLD"/>
+                                                <constraint firstAttribute="width" constant="60" id="1E2-1I-pLD"/>
                                                 <constraint firstAttribute="height" constant="21" id="HwX-LQ-EgI"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -57,6 +58,7 @@
                                     <constraints>
                                         <constraint firstItem="VMf-fr-tNC" firstAttribute="leading" secondItem="n9C-lT-Gev" secondAttribute="leadingMargin" constant="20" id="2zm-DW-fkd"/>
                                         <constraint firstItem="qxq-Dg-NkY" firstAttribute="centerY" secondItem="VMf-fr-tNC" secondAttribute="centerY" id="BCH-XY-eDc"/>
+                                        <constraint firstItem="VMf-fr-tNC" firstAttribute="top" secondItem="n9C-lT-Gev" secondAttribute="topMargin" constant="4" id="JTH-x8-Tc5"/>
                                         <constraint firstAttribute="trailing" secondItem="ocy-Q0-4BX" secondAttribute="trailing" constant="20" id="LLO-o7-82a"/>
                                         <constraint firstItem="ocy-Q0-4BX" firstAttribute="centerY" secondItem="VMf-fr-tNC" secondAttribute="centerY" id="gcV-27-PMu"/>
                                         <constraint firstItem="qxq-Dg-NkY" firstAttribute="trailing" secondItem="n9C-lT-Gev" secondAttribute="trailingMargin" id="ltF-8c-OJg"/>

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ISMessages
 
 extension String {
     var length: Int{
@@ -24,4 +25,13 @@ extension Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
     }
+}
+
+extension UIViewController {
+    func showErrorCard(title: String, message: String)  {
+        ISMessages.showCardAlert(withTitle: title, message: message, duration: 1, hideOnSwipe: true, hideOnTap: true, alertType: .error, alertPosition: .top, didHide: nil)
+
+    }
+    
+
 }

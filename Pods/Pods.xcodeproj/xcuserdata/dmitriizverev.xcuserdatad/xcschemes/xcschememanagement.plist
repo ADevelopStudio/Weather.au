@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>KVNProgress.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Weather.au.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,11 +27,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1CC71F9CD5545E32178492A81594B457</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4C4B180216960A09E044DCD1340DC2C9</key>
 		<dict>
 			<key>primary</key>
@@ -52,7 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FD759FC869D6E056C6193B18FAD0A24F</key>
+		<key>D608CAF4D00554488C45F32B8C88379B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

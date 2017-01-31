@@ -31,16 +31,14 @@ class WeatherCell: UITableViewCell {
         loader.isHidden = false
     }
     
-    func setState(_ state: CellState)  {
+
+    func setState(_ state: CellState, forecastCity: City)  {
         loader.isHidden = state != .loading
         self.isUserInteractionEnabled = state == .allGood
         self.accessoryType =  state != .allGood ? .none : .disclosureIndicator
         self.accessoryView = state == .error ? self.errorView : nil
-    }
-    
-    func fillWith(city:  Constants.City, forecast: Forecast?) {
-        cityName.text = city.rawValue
-        temperature.text = forecast != nil ? forecast!.mainForecastData.currentTempString : ""
+        cityName.text =  forecastCity.name
+        temperature.text =  ((forecastCity.forecast != nil && state != .loading) ? forecastCity.forecast!.mainForecastData.currentTempString : "")
     }
 
 }

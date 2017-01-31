@@ -10,10 +10,15 @@ import UIKit
 
 class WeatherDetailVC: UIViewController {
     
-    var city = City()
+    var city: City?
     
     override func viewDidLoad() {
      super.viewDidLoad()
-        title = city.city.rawValue
+     if city == nil {
+        self.showErrorCard(title: "Error", message: "Data was loaded incorrectly")
+        _ = self.navigationController?.popViewController(animated: true)
+        return
+     }
+        title = city!.name
     }
 }

@@ -4,6 +4,5 @@ use_frameworks!
 
 target 'Weather.au' do
   pod 'Alamofire'
-  pod 'KVNProgress'
   pod 'ISMessages'
 end

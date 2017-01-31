@@ -9,16 +9,24 @@
 import Foundation
 
 class City: NSObject {
-    var city: Constants.City!
-    var forecast: String = ""
-    var errorMessage: String = ""
-    override init(){
+    var name = ""
+    var id = ""
+    var forecast: Forecast?
+    var errorMessage = ""
+    
+    override init() {
         super.init()
     }
     
-    init(city: Constants.City) {
-        self.city = city
+    init(name: String, id: String ) {
+        self.name = name
+        self.id = id
     }
+    
+    init(cityId: String ) { //Posible to create object of class City if you do not know city name
+        self.id = cityId
+    }
+    
 }
 
 struct Wind {
@@ -56,6 +64,8 @@ class Forecast: NSObject {
     var mainForecastData: MainForecastData!
     var cityName = ""
     var cityId = ""
+    var isLoaded = false
+    
     
     var isValid: Bool {
         return cityName.length > 0 && cityId.length > 0
@@ -65,6 +75,7 @@ class Forecast: NSObject {
         super.init()
     }
     
+
     init(json: JSON) {
         let mainData = json["main"]
         mainForecastData  = MainForecastData(humidity: mainData["humidity"].intValue, pressure: mainData["pressure"].intValue, maxTemp: mainData["temp_max"].doubleValue, minTemp: mainData["temp_min"].doubleValue, currentTemp: mainData["temp"].doubleValue)
@@ -74,8 +85,12 @@ class Forecast: NSObject {
         visibility =  json["visibility"].intValue
         cityName =  json["name"].stringValue
         cityId =  json["id"].stringValue
+        isLoaded = true
     }
     
+    func updateDataWith(newForecast : Forecast) {
+        
+    }
     
     
 }
