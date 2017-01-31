@@ -29,7 +29,7 @@ extension MainViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let element =  arrayOfCities[indexPath.row]
-        if element.errorMessage.length > 0  {
+        if element.errorMessage.length == 0  {
             let alert = UIAlertController(title: "Error: \(element.city.rawValue)", message: element.errorMessage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Reload data", style: .default, handler: {
                 _ in
@@ -37,6 +37,8 @@ extension MainViewController {
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "detail", sender: element)
         }
     }
 }
@@ -52,6 +54,12 @@ class MainViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? WeatherDetailVC,  let city = sender as? City{
+            destinationVC.city = city
+            print("WW")
+        }
     }
 
 }

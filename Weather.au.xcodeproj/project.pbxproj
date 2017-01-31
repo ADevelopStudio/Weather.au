@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		624B47971E40AACC00EAADB2 /* WeatherDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B47961E40AACC00EAADB2 /* WeatherDetailVC.swift */; };
 		624C720E1E408DCE009467A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C720D1E408DCE009467A6 /* AppDelegate.swift */; };
 		624C72101E408DCE009467A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C720F1E408DCE009467A6 /* MainViewController.swift */; };
 		624C72131E408DCF009467A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624C72111E408DCF009467A6 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		0AC9C373C0D904964AACDC25 /* Pods_Weather_au.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_au.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		624B47961E40AACC00EAADB2 /* WeatherDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDetailVC.swift; sourceTree = "<group>"; };
 		624C720A1E408DCE009467A6 /* Weather.au.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.au.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		624C720D1E408DCE009467A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		624C720F1E408DCE009467A6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				624C720D1E408DCE009467A6 /* AppDelegate.swift */,
 				624C720F1E408DCE009467A6 /* MainViewController.swift */,
+				624B47961E40AACC00EAADB2 /* WeatherDetailVC.swift */,
 				624C72111E408DCF009467A6 /* Main.storyboard */,
 				624C72141E408DCF009467A6 /* Assets.xcassets */,
 				624C72161E408DCF009467A6 /* LaunchScreen.storyboard */,
@@ -247,6 +250,7 @@
 				62F94F9E1E409030008905F4 /* Connections.swift in Sources */,
 				62F94FA01E4090B6008905F4 /* Models.swift in Sources */,
 				62F94FA41E4092BF008905F4 /* WeatherCell.swift in Sources */,
+				624B47971E40AACC00EAADB2 /* WeatherDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
