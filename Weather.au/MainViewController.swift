@@ -64,7 +64,21 @@ class MainViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let refresher = UIRefreshControl()
+        refresher.backgroundColor = .clear
+        refresher.tintColor = .darkGray
+        refresher.addTarget(self, action: #selector(MainViewController.updateData(refr:)), for: .valueChanged)
+        self.tableView.addSubview(refresher)
+        
 //        self.tableView.isScrollEnabled = self.tableView.contentSize.height > (Constants.screenHeight - 65)
+    }
+    
+    func updateData(refr: UIRefreshControl)  {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            refr.endRefreshing()
+            self.tableView.reloadSections([0], with: .automatic)
+        }
     }
 
     override func didReceiveMemoryWarning() {
