@@ -159,7 +159,6 @@
 				TargetAttributes = {
 					624C72091E408DCE009467A6 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 2QX9SH777P;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -382,7 +381,7 @@
 			baseConfigurationReference = 79D1F47C2A906C0D11B1C876 /* Pods-Weather.au.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2QX9SH777P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather.au/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "au.com.makemeapp.Weather-au";
@@ -396,7 +395,7 @@
 			baseConfigurationReference = D00D36C3BB57C506A9022388 /* Pods-Weather.au.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2QX9SH777P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather.au/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "au.com.makemeapp.Weather-au";

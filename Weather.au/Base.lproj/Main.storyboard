@@ -124,7 +124,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clouds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="B5V-hh-fxY" customClass="MAGlowingLabel" customModule="Weather_au" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="54" width="200" height="21"/>
+                                            <rect key="frame" x="0.0" y="54" width="216" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="f8u-zc-DeU"/>
                                             </constraints>
@@ -142,11 +142,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="B5V-hh-fxY" firstAttribute="leading" secondItem="T8E-mX-Rqq" secondAttribute="leading" constant="8" id="5xg-yt-xEO"/>
+                                        <constraint firstItem="B5V-hh-fxY" firstAttribute="leading" secondItem="T8E-mX-Rqq" secondAttribute="leading" id="5xg-yt-xEO"/>
                                         <constraint firstItem="gHM-Xc-LG6" firstAttribute="top" secondItem="T8E-mX-Rqq" secondAttribute="top" constant="5" id="HqK-1b-N5y"/>
                                         <constraint firstItem="B5V-hh-fxY" firstAttribute="top" secondItem="uGc-OZ-N5w" secondAttribute="bottom" id="MMV-hg-IPH"/>
                                         <constraint firstItem="gHM-Xc-LG6" firstAttribute="bottom" secondItem="B5V-hh-fxY" secondAttribute="bottom" id="QaH-ls-BbL"/>
-                                        <constraint firstItem="gHM-Xc-LG6" firstAttribute="leading" secondItem="B5V-hh-fxY" secondAttribute="trailing" constant="8" id="V87-Lj-qb0"/>
+                                        <constraint firstItem="gHM-Xc-LG6" firstAttribute="leading" secondItem="B5V-hh-fxY" secondAttribute="trailing" id="V87-Lj-qb0"/>
                                         <constraint firstItem="uGc-OZ-N5w" firstAttribute="centerX" secondItem="B5V-hh-fxY" secondAttribute="centerX" id="uy8-pr-ZsB"/>
                                         <constraint firstAttribute="trailing" secondItem="gHM-Xc-LG6" secondAttribute="trailing" constant="21" id="v0y-aG-SFV"/>
                                     </constraints>
