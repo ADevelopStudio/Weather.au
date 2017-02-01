@@ -45,41 +45,41 @@ struct Wind {
     init(speed: Double, degree: Double) {
         var direction: String {
         switch degree {
-        case 348.75...360.0, 0..<11.25:
-            return "North"
-        case 11.25..<33.75:
-            return "NNE"
-        case 33.75..<56.25:
-            return "NorthEast"
-        case 56.25..<78.75:
-            return "ENE"
-        case 78.75..<101.25:
-            return "East"
-        case 101.25..<123.75:
-            return "ESE"
-        case 123.75..<146.25:
-            return "SouthEast"
-        case 146.25..<168.75:
-            return "SSE"
-        case 168.75..<191.25:
-            return "South"
-        case 191.25..<213.75:
-            return "SSW"
-        case 213.75..<236.25:
-            return "SouthWest"
-        case 236.25..<258.75:
-            return "WSW"
-        case 258.75..<281.25:
-            return "West"
-        case 281.25..<303.75:
-            return "WNW"
-        case 303.75..<326.25:
-            return "NorthWest"
-        case 326.25..<348.75:
-            return "NNW"
-        default:
-            return ""
-        }
+            case 348.75...360.0, 0..<11.25:
+                return "North"
+            case 11.25..<33.75:
+                return "NNE"
+            case 33.75..<56.25:
+                return "NorthEast"
+            case 56.25..<78.75:
+                return "ENE"
+            case 78.75..<101.25:
+                return "East"
+            case 101.25..<123.75:
+                return "ESE"
+            case 123.75..<146.25:
+                return "SouthEast"
+            case 146.25..<168.75:
+                return "SSE"
+            case 168.75..<191.25:
+                return "South"
+            case 191.25..<213.75:
+                return "SSW"
+            case 213.75..<236.25:
+                return "SouthWest"
+            case 236.25..<258.75:
+                return "WSW"
+            case 258.75..<281.25:
+                return "West"
+            case 281.25..<303.75:
+                return "WNW"
+            case 303.75..<326.25:
+                return "NorthWest"
+            case 326.25..<348.75:
+                return "NNW"
+            default:
+                return ""
+            }
         }
         self.descr = "\(speed.roundTo(places: 1)) m/s \(direction)(\(Int(degree)))"
     }
@@ -132,16 +132,13 @@ class Forecast: NSObject {
         super.init()
     }
     
-
     init(json: JSON) {
         visibility = "\(json["visibility"].intValue) meters"
         cityName =  json["name"].stringValue
         cityId =  json["id"].stringValue
-        
         sunsetTime = Date(timeIntervalSince1970: json["sys"]["sunset"].doubleValue).justTime()
         sunriseTime = Date(timeIntervalSince1970: json["sys"]["sunrise"].doubleValue).justTime()
         calculationTime = Date(timeIntervalSince1970: json["dt"].doubleValue).formatted("K:mma dd.MM.yyyy")
-        
         cloudiness = "\(json["clouds"]["all"].intValue) %"
         
         let mainData = json["main"]
@@ -150,11 +147,8 @@ class Forecast: NSObject {
         let windData = json["wind"]
         wind = Wind(speed: windData["speed"].doubleValue, degree: windData["deg"].doubleValue).descr
         
-        let weatherData = json["weather"]
+        let weatherData = json["weather"].arrayValue.count > 0 ? json["weather"].arrayValue.first! : json["weather"]
         weather = Weather(icon: weatherData["icon"].stringValue, descr: weatherData["description"].stringValue)
-        
     }
-
-    
     
 }

@@ -59,5 +59,4 @@ extension UIViewController {
         ISMessages.showCardAlert(withTitle: title, message: message, duration: 1, hideOnSwipe: true, hideOnTap: true, alertType: .error, alertPosition: .top, didHide: nil)
     }
     
-
 }

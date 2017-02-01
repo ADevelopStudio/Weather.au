@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Haneke
 
 /*
  For easier future customization and support new cities:
@@ -26,4 +27,5 @@ struct Constants {
     static let apiKey = "4a6392d6d156d72879f46bad2504ec52"
     static let screenWight:CGFloat = UIScreen.main.bounds.width
     static let screenHeight:CGFloat = UIScreen.main.bounds.height
+    static let cacheImages = Shared.imageCache
 }

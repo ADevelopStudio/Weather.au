@@ -19,16 +19,13 @@ class Connections: NSObject {
             "units" : "metric",
             "APPID" : Constants.apiKey
         ]
-        print(parameters)
             Alamofire.request(Constants.baseURLPath, parameters: parameters).responseJSON{
             (response) in
-            print("getCityWeather \(city.name)")
             if response.result.isFailure || response.result.value == nil {
                 completion(false, "Error getting forecast for \(city.name)", nil)
                 return
             }
             let responseJson = JSON(response.result.value!)
-            print(responseJson)
             if responseJson["message"].stringValue.length > 0 { //SOME ERROR FROM API
                 completion(false, responseJson["message"].stringValue, nil)
             } else {
@@ -42,15 +39,4 @@ class Connections: NSObject {
         }
     }
     
-    
-    func getWeatherImage(url: String,  completion: @escaping(_ image: UIImage?) -> ()) {
-        Alamofire.download(url).responseData { response in
-            if let data = response.result.value {
-                let image = UIImage(data: data)
-                completion(image)
-            } else {
-             completion(nil)
-            }
-        }
-    }
 }

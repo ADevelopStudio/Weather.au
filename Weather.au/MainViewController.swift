@@ -34,7 +34,8 @@ extension MainViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let element =  forecastCities[indexPath.row]
-        if element.errorMessage.length > 0 || element.forecast == nil  {
+        
+        if element.errorMessage.length > 0 || element.forecast == nil  {  //Error data loading checking
             let alert = UIAlertController(title: "Error: \(element.name)", message: element.errorMessage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Reload data", style: .default, handler: {
                 _ in
@@ -61,17 +62,16 @@ class MainViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .darkGray
         self.tableView.tableFooterView = UIView()
         self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         let refresher = UIRefreshControl()
         refresher.backgroundColor = .clear
-        refresher.tintColor = .darkGray
+        refresher.tintColor = .white
         refresher.addTarget(self, action: #selector(MainViewController.updateData(refr:)), for: .valueChanged)
         self.tableView.addSubview(refresher)
-        
-//        self.tableView.isScrollEnabled = self.tableView.contentSize.height > (Constants.screenHeight - 65)
     }
     
     func updateData(refr: UIRefreshControl)  {
